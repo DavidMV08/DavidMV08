@@ -25,6 +25,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Para referencia de posicionamiento */
         }
 
         header {
@@ -32,30 +33,23 @@
             border-bottom: 2px solid #0077b6;
             padding-bottom: 20px;
             margin-bottom: 20px;
-        }
-
-        header h1 {
-            margin: 0;
-            color: #0077b6;
-        }
-
-        header p {
-            margin: 5px 0;
+            margin-left: 180px; /* Espacio para la imagen */
         }
 
         section {
-            margin-bottom: 20px; /* Reducido de 25px a 20px */
+            margin-bottom: 20px;
+            margin-left: 180px; /* Todo el contenido se desplaza a la derecha */
         }
 
         section h2 {
             border-left: 5px solid #0077b6;
             padding-left: 10px;
             color: #0077b6;
-            margin-bottom: 10px; /* Añadido margen inferior consistente */
+            margin-bottom: 10px;
         }
 
         .item {
-            margin-bottom: 0; /* Eliminado margen */
+            margin-bottom: 0;
         }
 
         .item h3 {
@@ -69,7 +63,7 @@
 
         ul {
             padding-left: 25px;
-            margin: 5px 0 0 0; /* Eliminado margen inferior */
+            margin: 5px 0 0 0;
         }
 
         footer {
@@ -77,50 +71,40 @@
             margin-top: 30px;
             font-size: 0.9em;
             color: #777;
+            margin-left: 180px; /* Footer también se desplaza */
         }
 
-        /* SOLUCIÓN DEFINITIVA PARA LA IMAGEN */
-        .experiencia-con-imagen {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 0; /* Eliminar margen inferior */
+        /* IMAGEN FIJA EN LA ESQUINA SUPERIOR IZQUIERDA */
+        .imagen-perfil {
+            position: absolute;
+            top: 30px; /* Mismo padding que el container */
+            left: 30px; /* Mismo padding que el container */
+            width: 150px;
         }
 
-        .experiencia-texto {
-            flex: 1;
-        }
-
-        .imagen-experiencia {
-            margin-top: 0; /* IMPORTANTE: Sin margen superior */
-            flex-shrink: 0;
-        }
-
-        .imagen-experiencia img {
-            width: 250px;
+        .imagen-perfil img {
+            width: 100%;
             height: auto;
             border-radius: 5px;
-            display: block; /* Elimina espacio fantasma debajo de la imagen */
+            display: block;
+            border: 3px solid #0077b6; /* Borde opcional para destacar */
         }
 
-        /* Asegurar que Educación no tenga margen superior extra */
-        .educacion-section {
-            margin-top: 0;
-        }
-
+        /* Responsive */
         @media (max-width: 600px) {
             .container {
                 margin: 10px;
                 padding: 15px;
             }
             
-            .experiencia-con-imagen {
-                flex-direction: column;
+            header, section, footer {
+                margin-left: 0;
             }
             
-            .imagen-experiencia {
-                align-self: flex-end;
+            .imagen-perfil {
+                position: static;
+                margin-bottom: 20px;
+                width: 120px;
             }
         }
     </style>
@@ -128,6 +112,11 @@
 <body>
 
 <div class="container">
+    <!-- IMAGEN EN ESQUINA SUPERIOR IZQUIERDA -->
+    <div class="imagen-perfil">
+        <img src="https://mail.google.com/mail/u/0?ui=2&ik=e822e3fc6d&attid=0.1&permmsgid=msg-a:r5154475856764750855&th=19c52dbd595ad4c8&view=fimg&fur=ip&permmsgid=msg-a:r5154475856764750855&sz=s0-l75-ft&attbid=ANGjdJ_EJuWxOGpBEszMsTkKgKzHyB_o9o8jtXv8RklO8hfwaURikHX1s6IJrt8bM80GNFsFYD_KLZsseDmswXxeIkl1VLw8rbGLt1f2qt9N5zUq_x0YEuGeYrPQ0bM&disp=emb&realattid=19c52dbc032530078bd1&zw" alt="Foto de perfil">
+    </div>
+
     <header>
         <h1>David Medina Valero</h1>
         <p>Email: dameva587@gmail.com | Tel: +34 650 518 498</p>
@@ -139,27 +128,18 @@
         <p>Titulado del Grado Superior de Administración de Sistemas Informáticos en Red, con especial interés en redes y ciberseguridad. Me apasiona el sector de la informática y tengo como objetivo especializarme en ciberseguridad y convertirme en un profesional destacado en el ámbito tecnológico. Algunas de mis mejores habilidades son el compañerismo y la ganas de aprender continuas.</p>
     </section>
 
-    <!-- SECCIÓN EXPERIENCIA CON IMAGEN DENTRO DEL FLEXBOX -->
     <section>
         <h2>Experiencia Laboral</h2>
-        <div class="experiencia-con-imagen">
-            <div class="experiencia-texto">
-                <div class="item">
-                    <h3>Soporte Técnico - Empresa</h3>
-                    <span>Octubre 2025 - Diciembre 2025</span>
-                    <ul>
-                        <li>Reconocimiento de Problemas en red</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="imagen-experiencia">
-                <img src="https://mail.google.com/mail/u/0?ui=2&ik=e822e3fc6d&attid=0.1&permmsgid=msg-a:r5154475856764750855&th=19c52dbd595ad4c8&view=fimg&fur=ip&permmsgid=msg-a:r5154475856764750855&sz=s0-l75-ft&attbid=ANGjdJ_EJuWxOGpBEszMsTkKgKzHyB_o9o8jtXv8RklO8hfwaURikHX1s6IJrt8bM80GNFsFYD_KLZsseDmswXxeIkl1VLw8rbGLt1f2qt9N5zUq_x0YEuGeYrPQ0bM&disp=emb&realattid=19c52dbc032530078bd1&zw" alt="Experiencia">
-            </div>
+        <div class="item">
+            <h3>Soporte Técnico - Empresa</h3>
+            <span>Octubre 2025 - Diciembre 2025</span>
+            <ul>
+                <li>Reconocimiento de Problemas en red</li>
+            </ul>
         </div>
     </section>
 
-    <!-- SECCIÓN EDUCACIÓN - SIN ESPACIO EXTRA -->
-    <section class="educacion-section">
+    <section>
         <h2>Educación</h2>
         <div class="item">
             <h3>ASIR - IES Zaidin-Vergeles</h3>
