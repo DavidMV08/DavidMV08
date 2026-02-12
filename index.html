@@ -63,6 +63,7 @@
 
         ul {
             padding-left: 20px;
+            margin: 5px 0; /* Reducido el margen */
         }
 
         footer {
@@ -72,16 +73,25 @@
             color: #777;
         }
 
-        /* Estilo corregido para la imagen */
+        /* NUEVA ESTRUCTURA PARA LA IMAGEN */
+        .experiencia-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .experiencia-content {
+            flex: 1;
+        }
+
         .imagen-experiencia {
-            text-align: right;
-            margin-top: 10px;
-            margin-bottom: 0;
-            padding: 0;
+            margin-top: 25px; /* Ajusta este valor para subir/bajar la imagen */
+            flex-shrink: 0;
         }
 
         .imagen-experiencia img {
-            width: 200px;
+            width: 150px; /* Reducido un poco el tamaño */
             height: auto;
             border-radius: 5px;
         }
@@ -90,6 +100,15 @@
             .container {
                 margin: 10px;
                 padding: 15px;
+            }
+            
+            .experiencia-wrapper {
+                flex-direction: column;
+            }
+            
+            .imagen-experiencia {
+                text-align: right;
+                margin-top: 10px;
             }
         }
     </style>
@@ -100,26 +119,30 @@
     <header>
         <h1>David Medina Valero</h1>
         <p>Email: dameva587@gmail.com | Tel: +34 650 518 498</p>
-        <a href="https://acesse.one/c7q3Q">Linkedin</a>
+        <a href="https://acesse.one/c7q3Q">LinkedIn</a>
     </header>
 
     <section>
-        <h2>Descripcion</h2>
+        <h2>Descripción</h2>
         <p>Titulado del Grado Superior de Administración de Sistemas Informáticos en Red, con especial interés en redes y ciberseguridad. Me apasiona el sector de la informática y tengo como objetivo especializarme en ciberseguridad y convertirme en un profesional destacado en el ámbito tecnológico. Algunas de mis mejores habilidades son el compañerismo y la ganas de aprender continuas.</p>
     </section>
 
     <section>
         <h2>Experiencia Laboral</h2>
-        <div class="item">
-            <h3>Soporte Tecnico - Empresa</h3>
-            <span>Octubre 2025 - Diciembre 2025</span>
-            <ul>
-                <li>Reconocimiento de Problemas en red</li>
-            </ul>
-        </div>
-        <!-- CÓDIGO CORREGIDO - Sin punto y coma y con clase CSS definida -->
-        <div class="imagen-experiencia">
-            <img src="https://mail.google.com/mail/u/0?ui=2&ik=e822e3fc6d&attid=0.1&permmsgid=msg-a:r5154475856764750855&th=19c52dbd595ad4c8&view=fimg&fur=ip&permmsgid=msg-a:r5154475856764750855&sz=s0-l75-ft&attbid=ANGjdJ_EJuWxOGpBEszMsTkKgKzHyB_o9o8jtXv8RklO8hfwaURikHX1s6IJrt8bM80GNFsFYD_KLZsseDmswXxeIkl1VLw8rbGLt1f2qt9N5zUq_x0YEuGeYrPQ0bM&disp=emb&realattid=19c52dbc032530078bd1&zw" alt="Experiencia">
+        <!-- ESTRUCTURA CORREGIDA: Flexbox para alinear texto e imagen -->
+        <div class="experiencia-wrapper">
+            <div class="experiencia-content">
+                <div class="item">
+                    <h3>Soporte Técnico - Empresa</h3>
+                    <span>Octubre 2025 - Diciembre 2025</span>
+                    <ul>
+                        <li>Reconocimiento de Problemas en red</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="imagen-experiencia">
+                <img src="https://mail.google.com/mail/u/0?ui=2&ik=e822e3fc6d&attid=0.1&permmsgid=msg-a:r5154475856764750855&th=19c52dbd595ad4c8&view=fimg&fur=ip&permmsgid=msg-a:r5154475856764750855&sz=s0-l75-ft&attbid=ANGjdJ_EJuWxOGpBEszMsTkKgKzHyB_o9o8jtXv8RklO8hfwaURikHX1s6IJrt8bM80GNFsFYD_KLZsseDmswXxeIkl1VLw8rbGLt1f2qt9N5zUq_x0YEuGeYrPQ0bM&disp=emb&realattid=19c52dbc032530078bd1&zw" alt="Experiencia">
+            </div>
         </div>
     </section>
 
@@ -134,11 +157,11 @@
     <section>
         <h2>Habilidades</h2>
         <ul>
-            <li>Programacion con Python</li>
-            <li>Configurado de Redes</li>
-            <li>Instalacion y configuracion de contenedores Docker</li>
-            <li>Administracion de Sistemas Linux y Windows</li>
-            <li>Implementacion y Gestion de Bases de Datos</li>
+            <li>Programación con Python</li>
+            <li>Configuración de Redes</li>
+            <li>Instalación y configuración de contenedores Docker</li>
+            <li>Administración de Sistemas Linux y Windows</li>
+            <li>Implementación y Gestión de Bases de Datos</li>
             <li>Gestión de antivirus, copias de seguridad y recuperación ante desastres.</li>
             <li>Creación y gestión de máquinas virtuales (VMware, VirtualBox, Promox).</li>
         </ul>
@@ -156,4 +179,3 @@
 
 </body>
 </html>
-
