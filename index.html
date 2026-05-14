@@ -1,243 +1,387 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Medina Valero - Curriculum Vitae</title>
-    <style>
-        /* === ESTILOS CSS (Diseño Brillante y Profesional) === */
-        :root {
-            /* Paleta de colores claros y vibrantes */
-            --bg-color: #f0f4f8; /* Fondo gris muy azulado muy claro */
-            --card-bg: #ffffff;  /* Fondo de tarjetas blanco puro */
-            --text-main: #1e293b; /* Texto principal azul oscuro casi negro */
-            --text-muted: #64748b; /* Texto secundario gris azulado */
-            --accent: #0ea5e9;    /* Azul vibrante principal */
-            --accent-hover: #0284c7; /* Azul más oscuro para hovers */
-            --border-color: #e2e8f0; /* Color de bordes sutil */
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        .dashboard {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 320px 1fr; /* Columna de perfil un poco más ancha */
-            gap: 25px;
-        }
-
-        /* Tarjetas generales */
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px; /* Bordes más redondeados */
-            padding: 30px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra más suave */
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px); /* Pequeño salto al pasar el ratón */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        /* Columna Izquierda (Perfil) */
-        .profile-card {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            position: sticky; /* Se queda fija al hacer scroll */
-            top: 20px;
-            height: fit-content;
-        }
-
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            margin: 0 auto;
-            border: 4px solid var(--accent);
-            padding: 5px;
-            object-fit: cover;
-            background-color: white;
-        }
-
-        .profile-name { font-size: 1.75rem; color: var(--text-main); font-weight: 800; }
-        .profile-title { 
-            font-size: 0.95rem; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px; 
-            font-weight: 600;
-            background-color: #e0f2fe; /* Fondo suave para el título */
-            padding: 5px 10px;
-            border-radius: 8px;
-            display: inline-block;
-        }
-        
-        .contact-info { margin-top: 10px; text-align: left; }
-        .contact-info a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-            padding: 8px;
-            border-radius: 8px;
-        }
-        .contact-info a:hover { 
-            color: var(--accent); 
-            background-color: #f1f5f9;
-        }
-
-        /* Columna Derecha (Contenido) */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 25px;
-        }
-
-        .card-title {
-            color: var(--text-main);
-            border-bottom: 2px solid #e0f2fe;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-        }
-
-        /* Etiquetas de habilidades */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .skill-tag {
-            background-color: #f0f9ff;
-            color: var(--accent);
-            border: 1px solid #bae6fd;
-            padding: 8px 16px;
-            border-radius: 50px; /* Bordes totalmente redondeados */
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        
-        .skill-tag:hover {
-            background-color: var(--accent);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        /* Listas de experiencia/educación */
-        .timeline-item { margin-bottom: 20px; padding-left: 15px; border-left: 3px solid #e0f2fe; }
-        .timeline-title { font-weight: 700; font-size: 1.15rem; color: var(--text-main); }
-        .timeline-date { font-size: 0.85rem; color: var(--accent); margin-bottom: 8px; display: block; font-weight: 600; }
-        .timeline-item ul { padding-left: 20px; color: var(--text-muted); font-size: 1rem; }
-        .timeline-item li { margin-bottom: 5px; }
-        .timeline-item a { color: var(--accent); text-decoration: none; font-weight: 600; }
-        .timeline-item a:hover { text-decoration: underline; color: var(--accent-hover); }
-
-        /* Responsive para móviles */
-        @media (max-width: 900px) {
-            .dashboard { grid-template-columns: 1fr; }
-            .profile-card { position: static; height: auto; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Medina Valero — Administrador de Sistemas | Ciberseguridad</title>
+  <meta name="description" content="Técnico Superior ASIR, 20 años, Granada. Especializado en redes, sistemas Linux/Windows Server y automatización. Disponible de inmediato." />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #07090f; --surface: #0d1117; --surface2: #111827;
+      --border: #1f2937; --border2: #374151;
+      --accent: #38bdf8; --accent2: #818cf8; --green: #34d399;
+      --text: #f1f5f9; --muted: #64748b; --muted2: #94a3b8;
+      --mono: 'DM Mono', monospace; --sans: 'Outfit', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.65; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(56,189,248,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.025) 1px, transparent 1px);
+      background-size: 50px 50px; pointer-events: none; z-index: 0;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(7,9,15,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; color: var(--muted2); text-decoration: none; font-family: var(--mono); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 7rem 2rem 4rem; }
+    .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .blob1 { width: 500px; height: 500px; background: rgba(56,189,248,0.07); top: 5%; right: -100px; animation: drift 10s ease-in-out infinite; }
+    .blob2 { width: 350px; height: 350px; background: rgba(129,140,248,0.06); bottom: 10%; left: -50px; animation: drift 14s ease-in-out infinite reverse; }
+    @keyframes drift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-30px)} }
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; width: 100%; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.72rem;
+      background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25);
+      color: var(--green); padding: 0.35rem 0.9rem; border-radius: 100px;
+      margin-bottom: 1.8rem; animation: fadeUp 0.5s ease both;
+    }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 2s ease infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero-name { font-size: clamp(2.8rem, 9vw, 6.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; animation: fadeUp 0.6s ease both 0.1s; }
+    .hero-name .line2 { background: linear-gradient(100deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-role { margin-top: 1.2rem; font-family: var(--mono); font-size: 0.85rem; color: var(--muted2); letter-spacing: 0.05em; animation: fadeUp 0.6s ease both 0.2s; }
+    .hero-role span { color: var(--accent2); }
+    .hero-objetivo {
+      margin-top: 1.6rem; max-width: 560px;
+      background: var(--surface); border: 1px solid var(--border2);
+      border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem; font-size: 0.92rem; color: var(--muted2); line-height: 1.7;
+      animation: fadeUp 0.6s ease both 0.25s;
+    }
+    .hero-objetivo strong { color: var(--text); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; animation: fadeUp 0.6s ease both 0.35s; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--accent); color: #07090f;
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+      padding: 0.6rem 1.3rem; border-radius: 6px; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; color: var(--text);
+      font-family: var(--mono); font-size: 0.78rem;
+      padding: 0.6rem 1.3rem; border-radius: 6px;
+      border: 1px solid var(--border2); text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .stats-row {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.6s ease both 0.45s;
+    }
+    .stat-number {
+      font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .divider { border: none; height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
+    section { position: relative; z-index: 1; padding: 5rem 2rem; }
+    .container { max-width: 860px; margin: 0 auto; }
+    .section-tag { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .section-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 2.5rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; transition: border-color 0.25s, transform 0.25s; position: relative; overflow: hidden; }
+    .skill-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.3s; }
+    .skill-card.redes::after { background: linear-gradient(90deg, var(--accent), transparent); }
+    .skill-card.sistemas::after { background: linear-gradient(90deg, var(--accent2), transparent); }
+    .skill-card.scripting::after { background: linear-gradient(90deg, var(--green), transparent); }
+    .skill-card.seg::after { background: linear-gradient(90deg, #f472b6, transparent); }
+    .skill-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+    .skill-card:hover::after { opacity: 1; }
+    .skill-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .skill-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .skill-icon.r { background: rgba(56,189,248,0.1); }
+    .skill-icon.s { background: rgba(129,140,248,0.1); }
+    .skill-icon.sc { background: rgba(52,211,153,0.1); }
+    .skill-icon.se { background: rgba(244,114,182,0.1); }
+    .skill-name { font-family: var(--mono); font-size: 0.7rem; color: var(--muted2); letter-spacing: 0.1em; text-transform: uppercase; }
+    .skill-list { list-style: none; }
+    .skill-list li { font-size: 0.83rem; color: var(--muted2); padding: 0.28rem 0; display: flex; align-items: flex-start; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .skill-list li:last-child { border-bottom: none; }
+    .skill-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; }
+    .soft-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+    .soft-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; font-size: 0.85rem; color: var(--muted2); display: flex; align-items: center; gap: 0.7rem; }
+    .soft-chip span { font-size: 1.1rem; }
+    .timeline { padding-left: 1.5rem; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent); }
+    .tl-item { position: relative; margin-bottom: 2.5rem; }
+    .tl-item::before { content: ''; position: absolute; left: -1.9rem; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(56,189,248,0.5); }
+    .tl-date { font-family: var(--mono); font-size: 0.68rem; color: var(--accent2); letter-spacing: 0.08em; margin-bottom: 0.25rem; }
+    .tl-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .tl-sub { font-family: var(--mono); font-size: 0.76rem; color: var(--muted); }
+    .tl-desc { margin-top: 0.5rem; font-size: 0.84rem; color: var(--muted2); max-width: 520px; }
+    .tl-tag { display: inline-block; margin-top: 0.5rem; font-family: var(--mono); font-size: 0.65rem; background: rgba(56,189,248,0.07); border: 1px solid rgba(56,189,248,0.2); color: var(--accent); padding: 0.18rem 0.6rem; border-radius: 100px; }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .cert-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; }
+    .cert-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+    .cert-ico { font-size: 1.8rem; flex-shrink: 0; }
+    .cert-label { font-family: var(--mono); font-size: 0.65rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; }
+    .cert-name { font-weight: 700; font-size: 0.9rem; margin: 0.15rem 0; }
+    .cert-link { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
+    .cta-box { background: var(--surface); border: 1px solid var(--border2); border-radius: 14px; padding: 2.5rem; text-align: center; position: relative; overflow: hidden; }
+    .cta-box::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.07), transparent 60%); pointer-events: none; }
+    .cta-box h2 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+    .cta-box p { color: var(--muted2); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
+    .contact-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
+    .contact-chip { display: flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.73rem; background: var(--surface2); border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 100px; text-decoration: none; color: var(--muted2); transition: border-color 0.2s, color 0.2s; }
+    .contact-chip:hover { border-color: var(--accent); color: var(--accent); }
+    .info-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+    .info-chip { display: flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.75rem; background: var(--surface2); border: 1px solid var(--border); padding: 0.35rem 0.9rem; border-radius: 100px; color: var(--muted2); }
+    footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem 2rem; border-top: 1px solid var(--border); }
+    footer p { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+    footer a { color: var(--accent); text-decoration: none; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media(max-width:600px){nav{padding:.8rem 1rem}.nav-links{display:none}.hero{padding:5.5rem 1.25rem 3rem}section{padding:3.5rem 1.25rem}.cta-box{padding:1.5rem}}
+  </style>
 </head>
 <body>
 
-<div class="dashboard">
-    <div class="card profile-card">
-        <img src="foto-perfil.jpg" alt="Foto de perfil" class="profile-img">
+<nav>
+  <div class="nav-logo">david.mv / portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experiencia">experiencia</a></li>
+    <li><a href="#certs">certs</a></li>
+    <li><a href="#contacto">contacto</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-inner">
+    <div class="status-badge">
+      <div class="status-dot"></div>
+      Disponible para trabajar — incorporación inmediata
+    </div>
+    <h1 class="hero-name">
+      David<br>
+      <span class="line2">Medina</span><br>
+      Valero
+    </h1>
+    <p class="hero-role">
+      Técnico Superior ASIR &nbsp;·&nbsp;
+      <span>Redes &amp; Ciberseguridad</span>
+      &nbsp;·&nbsp; 20 años · Granada
+    </p>
+    <div class="hero-objetivo">
+      Busco mi primer empleo como <strong>Técnico de Sistemas, Helpdesk o Soporte Técnico</strong>.
+      Aporto formación técnica sólida, experiencia real en el Ayuntamiento de Motril (380h),
+      certificaciones Python de Cisco y muchas ganas de crecer en el sector IT.
+    </div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="mailto:dameva587@gmail.com">✉ Contáctame</a>
+      <a class="btn-outline" href="tel:650518498">📞 650 51 84 98</a>
+      <a class="btn-outline" href="https://www.linkedin.com/in/david-medina-valero-9b2196340/" target="_blank">💼 LinkedIn</a>
+      <a class="btn-outline" href="https://github.com/DavidMV08" target="_blank">🐙 GitHub</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-number">380h</div>
+        <div class="stat-label">Prácticas reales</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Certificaciones</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">ASIR</div>
+        <div class="stat-label">Grado Superior 2025</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="skills">
+  <div class="container">
+    <p class="section-tag reveal">// lo que sé hacer</p>
+    <h2 class="section-title reveal">Stack Técnico</h2>
+    <div class="skills-grid">
+      <div class="skill-card redes reveal">
+        <div class="skill-header">
+          <div class="skill-icon r">🌐</div>
+          <div class="skill-name">Redes</div>
+        </div>
+        <ul class="skill-list">
+          <li>VLANs y trunking 802.1Q (switches Cisco)</li>
+          <li>Routing estático y dinámico, segmentación</li>
+          <li>Modelo TCP/IP — resolución de incidencias</li>
+          <li>Seguridad básica perimetral en redes</li>
+          <li>Diagnóstico con Wireshark y herramientas CLI</li>
+        </ul>
+      </div>
+      <div class="skill-card sistemas reveal">
+        <div class="skill-header">
+          <div class="skill-icon s">🖥️</div>
+          <div class="skill-name">Sistemas</div>
+        </div>
+        <ul class="skill-list">
+          <li>Windows Server 2019 / 2022</li>
+          <li>Linux (Debian, Ubuntu)</li>
+          <li>Active Directory, GPO, usuarios y permisos</li>
+          <li>DNS, DHCP y servidor FTP</li>
+          <li>Virtualización: Proxmox, VirtualBox</li>
+          <li>Contenedores Docker</li>
+        </ul>
+      </div>
+      <div class="skill-card scripting reveal">
+        <div class="skill-header">
+          <div class="skill-icon sc">⚙️</div>
+          <div class="skill-name">Automatización</div>
+        </div>
+        <ul class="skill-list">
+          <li>Python — scripts de administración</li>
+          <li>Bash / Shell scripting</li>
+          <li>PowerShell — administración Windows</li>
+          <li>Copias de seguridad automatizadas</li>
+          <li>Gestión de tareas programadas (cron)</li>
+        </ul>
+      </div>
+      <div class="skill-card seg reveal">
+        <div class="skill-header">
+          <div class="skill-icon se">🔐</div>
+          <div class="skill-name">Seguridad &amp; Servicios Web</div>
+        </div>
+        <ul class="skill-list">
+          <li>Servidor web Apache / Nginx</li>
+          <li>Certificados SSL/TLS y HTTPS</li>
+          <li>Firewall: iptables y UFW</li>
+          <li>SQL — implementación y administración</li>
+          <li>Copias de seguridad y recuperación ante desastres</li>
+          <li>Gestión de accesos, usuarios y permisos</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="section-tag reveal" style="margin-top:3rem;">// también cuento con</p>
+    <h3 class="reveal" style="font-size:1.1rem;font-weight:700;margin-bottom:1.2rem;letter-spacing:-0.01em;">Habilidades personales</h3>
+    <div class="soft-grid">
+      <div class="soft-chip reveal"><span>🤝</span> Trabajo en equipo</div>
+      <div class="soft-chip reveal"><span>📚</span> Aprendizaje continuo</div>
+      <div class="soft-chip reveal"><span>🔎</span> Resolución de problemas</div>
+      <div class="soft-chip reveal"><span>📋</span> Organización y meticulosidad</div>
+      <div class="soft-chip reveal"><span>🗣️</span> Comunicación clara</div>
+      <div class="soft-chip reveal"><span>🚀</span> Actitud proactiva</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="experiencia">
+  <div class="container">
+    <p class="section-tag reveal">// trayectoria</p>
+    <h2 class="section-title reveal">Experiencia y Formación</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-date">2025 — EXPERIENCIA PROFESIONAL</div>
+        <div class="tl-title">Técnico de Sistemas en Prácticas</div>
+        <div class="tl-sub">Ayuntamiento de Motril, Granada</div>
+        <p class="tl-desc">Soporte técnico a usuarios, mantenimiento de infraestructura IT, gestión de incidencias y administración de sistemas en entorno real de administración pública.</p>
+        <span class="tl-tag">380 horas</span>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">2023 – 2025 — FORMACIÓN</div>
+        <div class="tl-title">Técnico Superior — ASIR</div>
+        <div class="tl-sub">IES Zaidín Vergeles, Granada</div>
+        <p class="tl-desc">Administración de Sistemas Informáticos en Red. Formación completa en redes, servidores, virtualización, seguridad y scripting.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">ANTERIOR — FORMACIÓN</div>
+        <div class="tl-title">Bachillerato Científico</div>
+        <div class="tl-sub">IES Mediterráneo, Granada</div>
+      </div>
+    </div>
+    <div class="info-row reveal">
+      <div class="info-chip">🚗 Carnet B &amp; vehículo propio</div>
+      <div class="info-chip">📍 Granada — disponible provincia y remoto</div>
+      <div class="info-chip">🕐 Incorporación inmediata</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="certs">
+  <div class="container">
+    <p class="section-tag reveal">// credenciales</p>
+    <h2 class="section-title reveal">Certificaciones</h2>
+    <div class="certs-grid">
+      <a class="cert-card reveal" href="https://l1nq.com/wO8m4" target="_blank">
+        <div class="cert-ico">🐍</div>
         <div>
-            <h1 class="profile-name">David Medina Valero</h1>
-            <p class="profile-title">Técnico de Sistemas | Ciberseguridad</p>
+          <div class="cert-label">Cisco NetAcad</div>
+          <div class="cert-name">Python Essentials 1</div>
+          <div class="cert-link">Ver certificado →</div>
         </div>
-        <div class="contact-info">
-            <a href="mailto:dameva587@gmail.com">✉️ dameva587@gmail.com</a>
-            <a href="tel:+34650518498">📱 +34 650 518 498</a>
-            <a href="https://acesse.one/c7q3Q" target="_blank">🔗 Perfil de LinkedIn</a>
+      </a>
+      <a class="cert-card reveal" href="https://acortar.link/o7AaQF" target="_blank">
+        <div class="cert-ico">🐍</div>
+        <div>
+          <div class="cert-label">Cisco NetAcad</div>
+          <div class="cert-name">Python Essentials 2</div>
+          <div class="cert-link">Ver certificado →</div>
         </div>
+      </a>
     </div>
+  </div>
+</section>
 
-    <div class="content-grid">
-        
-        <div class="card" style="grid-column: 1 / -1;">
-            <h2 class="card-title">👨‍💻 Sobre Mí</h2>
-            <p style="color: var(--text-muted); font-size: 1rem;">
-                Titulado del Grado Superior de Administración de Sistemas Informáticos en Red, con especial interés en redes y ciberseguridad. Me apasiona el sector de la informática y tengo como objetivo especializarme en ciberseguridad y convertirme en un profesional destacado en el ámbito tecnológico. Algunas de mis mejores habilidades son el compañerismo y las ganas continuas de aprender.
-            </p>
-        </div>
+<hr class="divider" />
 
-        <div class="card">
-            <h2 class="card-title">⚡ Habilidades Técnicas</h2>
-            <div class="skills-container">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Redes</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Linux</span>
-                <span class="skill-tag">Windows Server</span>
-                <span class="skill-tag">Bases de Datos</span>
-                <span class="skill-tag">Antivirus</span>
-                <span class="skill-tag">Backups</span>
-                <span class="skill-tag">VMware</span>
-                <span class="skill-tag">VirtualBox</span>
-                <span class="skill-tag">Proxmox</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2 class="card-title">💼 Experiencia Laboral</h2>
-            <div class="timeline-item">
-                <div class="timeline-title">Soporte Técnico - Empresa</div>
-                <span class="timeline-date">Octubre 2025 - Diciembre 2025</span>
-                <ul>
-                    <li>Reconocimiento de Problemas en red</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2 class="card-title">🎓 Educación</h2>
-            <div class="timeline-item">
-                <div class="timeline-title">ASIR - IES Zaidín-Vergeles</div>
-                <span class="timeline-date">2023 - 2025</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2 class="card-title">📜 Certificados</h2>
-            <div class="timeline-item">
-                <div class="timeline-title">
-                    <a href="https://l1nq.com/wO8m4" target="_blank">Python Essentials 1</a>
-                </div>
-                <div class="timeline-title">
-                    <a href="https://www.credly.com/badges/7505f8c0-ff54-4a93-81b2-c673c276f55d/linked_in_profile" target="_blank">Python Essentials 2</a> 
-                </div>   
-            </div>
-        </div>
-       
-
+<section id="contacto">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>¿Hablamos?</h2>
+      <p>Estoy buscando mi primera oportunidad en IT. Si buscas un técnico junior con ganas, escríbeme.</p>
+      <div class="cta-actions">
+        <a class="btn-primary" href="mailto:dameva587@gmail.com">✉ dameva587@gmail.com</a>
+        <a class="btn-outline" href="tel:650518498">📞 650 51 84 98</a>
+      </div>
+      <div class="contact-chips">
+        <a class="contact-chip" href="https://www.linkedin.com/in/david-medina-valero-9b2196340/" target="_blank">💼 LinkedIn</a>
+        <a class="contact-chip" href="https://github.com/DavidMV08" target="_blank">🐙 github.com/DavidMV08</a>
+      </div>
     </div>
-</div>
+  </div>
+</section>
 
+<footer>
+  <p>David Medina Valero &nbsp;·&nbsp; Granada, España &nbsp;·&nbsp; 2025</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
